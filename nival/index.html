@@ -66,12 +66,11 @@
     background: linear-gradient(180deg, rgba(29,29,27,0.42) 0%, rgba(29,29,27,0.16) 38%, rgba(29,29,27,0.20) 70%, rgba(29,29,27,0.55) 100%);
   }
   .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; padding: 0 24px; }
-  .hero-plate {
-    background: rgba(246,243,238,0.96); padding: 30px 48px 26px;
-    display: flex; flex-direction: column; align-items: center; margin-bottom: 34px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+  .hero-badge {
+    width: 236px; height: 236px; border-radius: 50%; overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35); margin-bottom: 34px;
   }
-  .hero-plate img { width: 190px; }
+  .hero-badge img { width: 100%; height: 100%; object-fit: cover; }
   .hero h1 {
     font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400;
     font-size: clamp(26px, 3.4vw, 40px); color: var(--blanco); margin-bottom: 40px;
@@ -183,7 +182,7 @@
   /* ── FOOTER ── */
   footer { background: var(--verde); color: var(--marfil); padding: 70px 0 36px; }
   .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
-  .footer-logo img { width: 150px; background: var(--marfil); padding: 14px 18px; }
+  .footer-logo img { width: 130px; border-radius: 50%; }
   .footer-col h4 { font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(246,243,238,0.55); margin-bottom: 16px; }
   .footer-col a, .footer-col p { display: block; font-family: 'Inter', sans-serif; font-weight: 300; font-size: 14.5px; color: rgba(246,243,238,0.9); margin-bottom: 8px; }
   .footer-col a:hover { color: var(--roble); }
@@ -194,8 +193,7 @@
     .wrap { padding: 0 24px; }
     nav { padding: 22px 24px; }
     .nav-links { display: none; }
-    .hero-plate { padding: 22px 30px 20px; }
-    .hero-plate img { width: 140px; }
+    .hero-badge { width: 168px; height: 168px; margin-bottom: 26px; }
     .hero h1 { font-size: 22px; margin-bottom: 30px; }
     .s-intro { padding: 110px 0 70px; }
     .s-intro-img img { height: 42vh; }
@@ -231,8 +229,8 @@
   <img class="hero-img" src="nival-hero.jpg" alt="NIVAL Residences — Bariloche">
   <div class="hero-scrim"></div>
   <div class="hero-content">
-    <div class="hero-plate">
-      <img src="nival-logo.png" alt="NIVAL Residences">
+    <div class="hero-badge">
+      <img src="nival-logo-circle-full.png" alt="NIVAL Residences">
     </div>
     <h1>Arquitectura en estado natural.</h1>
     <a href="#proyecto" class="btn">Conocer el proyecto</a>
@@ -417,7 +415,7 @@
 <footer>
   <div class="wrap">
     <div class="footer-top">
-      <div class="footer-logo"><img src="nival-logo.png" alt="NIVAL Residences"></div>
+      <div class="footer-logo"><img src="nival-logo-circle-full.png" alt="NIVAL Residences"></div>
       <div class="footer-col">
         <h4>Redes</h4>
         <a href="https://instagram.com/nival.bariloche" target="_blank">@nival.bariloche</a>
