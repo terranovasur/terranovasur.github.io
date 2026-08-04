@@ -1,1 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIVAL Residences — Arquitectura en estado natural | Bariloche</title>
+<meta name="description" content="NIVAL Residences. Un desarrollo de Terranova Sur en Bariloche, Patagonia. Arquitectura contemporánea integrada al bosque patagónico.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --carbon: #1D1D1B;
+    --verde: #2F463A;
+    --roble: #B48A60;
+    --marfil: #F6F3EE;
+    --gris: #6E6E6E;
+    --blanco: #FFFFFF;
+  }
 
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--marfil);
+    color: var(--carbon);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; }
+  a { text-decoration: none; color: inherit; }
+
+  .titulo { font-family: 'Montserrat', sans-serif; font-weight: 600; letter-spacing: 0.02em; }
+  .frase { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; }
+  .label {
+    font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 12px;
+    letter-spacing: 0.28em; text-transform: uppercase; color: var(--roble);
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 48px; transition: all .4s ease;
+  }
+  nav.solid { background: rgba(246,243,238,0.94); backdrop-filter: blur(10px); padding: 18px 48px; box-shadow: 0 1px 0 rgba(29,29,27,0.06); }
+  .nav-word { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.32em; color: var(--blanco); transition: color .4s; }
+  nav.solid .nav-word { color: var(--carbon); }
+  .nav-links { display: flex; gap: 44px; list-style: none; }
+  .nav-links a { font-family: 'Montserrat', sans-serif; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(246,243,238,0.85); transition: color .4s, opacity .2s; }
+  nav.solid .nav-links a { color: var(--carbon); }
+  .nav-links a:hover { opacity: 0.6; }
+  .nav-toggle { display: none; }
+
+  /* ── HERO ── */
+  .hero {
+    height: 100vh; min-height: 640px; position: relative;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    overflow: hidden;
+  }
+  .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero-scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(29,29,27,0.42) 0%, rgba(29,29,27,0.16) 38%, rgba(29,29,27,0.20) 70%, rgba(29,29,27,0.55) 100%);
+  }
+  .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; padding: 0 24px; }
+  .hero-plate {
+    background: rgba(246,243,238,0.96); padding: 30px 48px 26px;
+    display: flex; flex-direction: column; align-items: center; margin-bottom: 34px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+  }
+  .hero-plate img { width: 190px; }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400;
+    font-size: clamp(26px, 3.4vw, 40px); color: var(--blanco); margin-bottom: 40px;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.3);
+  }
+  .btn {
+    display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 11.5px;
+    letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
+    color: var(--blanco); border: 1px solid rgba(246,243,238,0.7);
+    padding: 18px 42px; transition: all .3s;
+  }
+  .btn:hover { background: var(--marfil); color: var(--carbon); border-color: var(--marfil); }
+  .btn-dark { color: var(--carbon); border-color: var(--carbon); }
+  .btn-dark:hover { background: var(--carbon); color: var(--marfil); }
+  .hero-scroll {
+    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); z-index: 2;
+    color: rgba(246,243,238,0.75); font-family: 'Montserrat', sans-serif; font-size: 10px;
+    letter-spacing: 0.3em; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 10px;
+  }
+  .hero-scroll::after { content: ''; width: 1px; height: 34px; background: rgba(246,243,238,0.5); display: block; animation: scrolldown 2s infinite; }
+  @keyframes scrolldown { 0% { opacity: 0; transform: scaleY(0.3); transform-origin: top; } 50% { opacity: 1; } 100% { opacity: 0; transform: scaleY(1); transform-origin: top; } }
+
+  /* ── FADE IN ── */
+  .fade { opacity: 0; transform: translateY(28px); transition: opacity 1s ease, transform 1s ease; }
+  .fade.in { opacity: 1; transform: translateY(0); }
+
+  /* ── SECCIÓN INTRO ── */
+  .s-intro { padding: 160px 0 100px; text-align: center; }
+  .s-intro .label { margin-bottom: 26px; }
+  .s-intro h2 { font-size: clamp(28px, 4vw, 46px); line-height: 1.28; max-width: 780px; margin: 0 auto 30px; font-weight: 500; }
+  .s-intro p { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 17px; line-height: 1.9; color: var(--gris); max-width: 620px; margin: 0 auto; }
+  .s-intro-img { margin-top: 90px; width: 100%; }
+  .s-intro-img img { width: 100%; height: 62vh; min-height: 340px; object-fit: cover; }
+
+  /* ── PILARES ── */
+  .s-pilares { padding: 110px 0 130px; }
+  .pilares-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 70px; text-align: center; }
+  .pilar-icon { width: 40px; height: 40px; margin: 0 auto 30px; color: var(--verde); }
+  .pilar h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; letter-spacing: 0.02em; }
+  .pilar p { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.8; color: var(--gris); }
+
+  /* ── GALERÍA ── */
+  .s-galeria { padding: 40px 0 130px; }
+  .s-galeria .head { text-align: center; margin-bottom: 64px; }
+  .s-galeria h2 { font-size: clamp(26px, 3.6vw, 40px); font-weight: 500; margin-top: 22px; }
+  .gal-tabs { display: flex; justify-content: center; gap: 36px; margin-bottom: 44px; }
+  .gal-tab {
+    font-family: 'Montserrat', sans-serif; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gris); padding-bottom: 8px; border-bottom: 1px solid transparent; cursor: pointer; transition: all .25s; background: none; border-top:none; border-left:none; border-right:none;
+  }
+  .gal-tab.active { color: var(--carbon); border-bottom-color: var(--roble); }
+  .gal-track-wrap { position: relative; }
+  .gal-track {
+    display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding: 0 40px 20px; scrollbar-width: none;
+  }
+  .gal-track::-webkit-scrollbar { display: none; }
+  .gal-slide { flex: 0 0 auto; width: min(78vw, 640px); scroll-snap-align: center; }
+  .gal-slide img { width: 100%; height: 66vh; max-height: 560px; object-fit: cover; }
+  .gal-arrows { display: flex; justify-content: center; gap: 18px; margin-top: 30px; }
+  .gal-arrow {
+    width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(29,29,27,0.2);
+    background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .25s;
+  }
+  .gal-arrow:hover { background: var(--carbon); border-color: var(--carbon); }
+  .gal-arrow:hover svg { stroke: var(--marfil); }
+  .gal-arrow svg { width: 16px; height: 16px; stroke: var(--carbon); transition: stroke .25s; }
+
+  /* ── UBICACIÓN ── */
+  .s-ubicacion { padding: 40px 0 130px; }
+  .ubic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+  .s-ubicacion .label { margin-bottom: 24px; }
+  .s-ubicacion h2 { font-size: clamp(26px, 3.4vw, 38px); font-weight: 500; line-height: 1.3; margin-bottom: 26px; }
+  .s-ubicacion .frase { font-size: 21px; color: var(--verde); display: block; line-height: 1.6; }
+  .ubic-img img { width: 100%; box-shadow: 0 30px 70px rgba(29,29,27,0.14); }
+
+  /* ── CARACTERÍSTICAS ── */
+  .s-caract { padding: 110px 0 130px; background: var(--carbon); color: var(--marfil); }
+  .s-caract .label { color: var(--roble); }
+  .s-caract .head { text-align: center; margin-bottom: 80px; }
+  .s-caract h2 { font-size: clamp(26px, 3.6vw, 40px); font-weight: 500; margin-top: 22px; color: var(--marfil); }
+  .caract-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 54px 40px; }
+  .caract-item { display: flex; align-items: flex-start; gap: 18px; }
+  .caract-item svg { width: 26px; height: 26px; flex-shrink: 0; margin-top: 3px; color: var(--roble); }
+  .caract-item span { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 15.5px; line-height: 1.6; color: rgba(246,243,238,0.88); }
+
+  /* ── SOBRE TERRANOVA ── */
+  .s-sobre { padding: 130px 0; text-align: center; }
+  .s-sobre h2 { font-size: clamp(26px, 3.6vw, 38px); font-weight: 500; margin: 22px 0 30px; }
+  .s-sobre p { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 16.5px; line-height: 1.9; color: var(--gris); max-width: 640px; margin: 0 auto 40px; }
+
+  /* ── FORM ── */
+  .s-form { padding: 40px 0 150px; }
+  .form-box { max-width: 640px; margin: 0 auto; text-align: center; }
+  .form-box .label { margin-bottom: 24px; }
+  .form-box h2 { font-size: clamp(26px, 3.6vw, 40px); font-weight: 500; margin-bottom: 54px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 22px; text-align: left; }
+  .field-full { grid-column: 1 / -1; }
+  .form-box label { display: block; font-family: 'Montserrat', sans-serif; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gris); margin-bottom: 10px; }
+  .form-box input, .form-box textarea {
+    width: 100%; border: none; border-bottom: 1px solid rgba(29,29,27,0.25);
+    background: transparent; padding: 10px 2px; font-family: 'Inter', sans-serif; font-size: 15px; color: var(--carbon); outline: none;
+  }
+  .form-box input:focus, .form-box textarea:focus { border-bottom-color: var(--roble); }
+  .form-box textarea { resize: none; height: 70px; }
+  .form-submit { margin-top: 20px; }
+  .form-note { font-family: 'Inter', sans-serif; font-size: 12.5px; color: var(--gris); margin-top: 22px; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--verde); color: var(--marfil); padding: 70px 0 36px; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
+  .footer-logo img { width: 150px; background: var(--marfil); padding: 14px 18px; }
+  .footer-col h4 { font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(246,243,238,0.55); margin-bottom: 16px; }
+  .footer-col a, .footer-col p { display: block; font-family: 'Inter', sans-serif; font-weight: 300; font-size: 14.5px; color: rgba(246,243,238,0.9); margin-bottom: 8px; }
+  .footer-col a:hover { color: var(--roble); }
+  .footer-bottom { border-top: 1px solid rgba(246,243,238,0.15); padding-top: 26px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-family: 'Inter', sans-serif; font-size: 12.5px; color: rgba(246,243,238,0.5); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .wrap { padding: 0 24px; }
+    nav { padding: 22px 24px; }
+    .nav-links { display: none; }
+    .hero-plate { padding: 22px 30px 20px; }
+    .hero-plate img { width: 140px; }
+    .hero h1 { font-size: 22px; margin-bottom: 30px; }
+    .s-intro { padding: 110px 0 70px; }
+    .s-intro-img img { height: 42vh; }
+    .pilares-grid { grid-template-columns: 1fr; gap: 50px; }
+    .s-pilares { padding: 80px 0 90px; }
+    .gal-slide { width: 86vw; }
+    .gal-slide img { height: 48vh; }
+    .ubic-grid { grid-template-columns: 1fr; gap: 36px; }
+    .ubic-img { order: -1; }
+    .caract-grid { grid-template-columns: 1fr; gap: 30px; }
+    .s-caract { padding: 80px 0 90px; }
+    .s-sobre { padding: 90px 0; }
+    .field-row { grid-template-columns: 1fr; }
+    .footer-top { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-word">NIVAL</a>
+  <ul class="nav-links">
+    <li><a href="#proyecto">Proyecto</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#ubicacion">Ubicación</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <img class="hero-img" src="nival-hero.jpg" alt="NIVAL Residences — Bariloche">
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <div class="hero-plate">
+      <img src="nival-logo.png" alt="NIVAL Residences">
+    </div>
+    <h1>Arquitectura en estado natural.</h1>
+    <a href="#proyecto" class="btn">Conocer el proyecto</a>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- INTRO / PROYECTO -->
+<section class="s-intro" id="proyecto">
+  <div class="wrap">
+    <div class="label fade">Nival Residences</div>
+    <h2 class="titulo fade">Arquitectura que dialoga con el paisaje.</h2>
+    <p class="fade">Un desarrollo pensado para integrarse al bosque patagónico, donde cada decisión de diseño busca potenciar la relación entre la vivienda y la naturaleza.</p>
+  </div>
+  <div class="s-intro-img fade">
+    <img src="nival-exterior-2.jpg" alt="Residencias NIVAL con vista a la montaña">
+  </div>
+</section>
+
+<!-- PILARES -->
+<section class="s-pilares">
+  <div class="wrap pilares-grid">
+    <div class="pilar fade">
+      <svg class="pilar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M10 44 V22 L24 8 L38 22 V44" stroke-linejoin="round"/>
+        <path d="M18 44 V30 H30 V44"/>
+      </svg>
+      <h3 class="titulo">Arquitectura contemporánea</h3>
+      <p>Líneas simples, materiales nobles y una identidad propia que dialoga con el entorno patagónico.</p>
+    </div>
+    <div class="pilar fade">
+      <svg class="pilar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M24 6 L24 42" stroke-linecap="round"/>
+        <path d="M24 12 L15 22 M24 12 L33 22 M24 20 L13 32 M24 20 L35 32 M24 28 L16 40 M24 28 L32 40" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3 class="titulo">Naturaleza</h3>
+      <p>Cada residencia se emplaza respetando el bosque existente, integrando el paisaje nativo al diseño.</p>
+    </div>
+    <div class="pilar fade">
+      <svg class="pilar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6">
+        <circle cx="24" cy="24" r="17"/>
+        <path d="M16 24.5 L21 29.5 L32 18" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3 class="titulo">Calidad constructiva</h3>
+      <p>Procesos y materiales pensados para perdurar, con el mismo criterio técnico de Terranova Sur.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section class="s-galeria" id="galeria">
+  <div class="head wrap">
+    <div class="label fade">Galería</div>
+    <h2 class="titulo fade">Exterior, interior y detalle.</h2>
+  </div>
+
+  <div class="gal-tabs fade">
+    <button class="gal-tab active" data-target="tab-exterior">Exterior</button>
+    <button class="gal-tab" data-target="tab-interior">Interior</button>
+  </div>
+
+  <div class="gal-track-wrap fade">
+    <div class="gal-track" id="tab-exterior">
+      <div class="gal-slide"><img src="nival-aerial.jpg" alt="Vista aérea de NIVAL Residences"></div>
+      <div class="gal-slide"><img src="nival-exterior-2.jpg" alt="Residencias con vista a la montaña"></div>
+      <div class="gal-slide"><img src="nival-exterior-3.jpg" alt="Residencia NIVAL al atardecer"></div>
+      <div class="gal-slide"><img src="nival-exterior-4.jpg" alt="Conjunto de residencias NIVAL"></div>
+    </div>
+    <div class="gal-track" id="tab-interior" style="display:none;">
+      <div class="gal-slide"><img src="nival-interior-1.jpg" alt="Interior living y cocina, vista al bosque"></div>
+      <div class="gal-slide"><img src="nival-interior-2.jpg" alt="Interior living con revestimiento en madera"></div>
+      <div class="gal-slide"><img src="nival-interior-3.jpg" alt="Dormitorio con revestimiento en madera"></div>
+    </div>
+    <div class="gal-arrows">
+      <button class="gal-arrow" id="galPrev" aria-label="Anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="gal-arrow" id="galNext" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACIÓN -->
+<section class="s-ubicacion" id="ubicacion">
+  <div class="wrap ubic-grid">
+    <div class="fade">
+      <div class="label">Ubicación</div>
+      <h2 class="titulo">A solo 18 minutos<br>del centro de Bariloche.</h2>
+      <span class="frase">Lo suficientemente cerca de la ciudad.<br>Lo suficientemente lejos del ruido.</span>
+    </div>
+    <div class="ubic-img fade">
+      <img src="nival-ubicacion.jpg" alt="Ubicación de NIVAL Residences, barrio Dos Valles, Bariloche">
+    </div>
+  </div>
+</section>
+
+<!-- CARACTERÍSTICAS -->
+<section class="s-caract">
+  <div class="wrap">
+    <div class="head">
+      <div class="label fade">Características</div>
+      <h2 class="titulo fade">Pensadas para vivir el bosque.</h2>
+    </div>
+    <div class="caract-grid">
+      <div class="caract-item fade">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 21 V10 L12 4 L20 10 V21" stroke-linejoin="round"/></svg>
+        <span>Casas de diseño contemporáneo</span>
+      </div>
+      <div class="caract-item fade">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16"/><path d="M12 4 V20 M4 12 H20"/></svg>
+        <span>Grandes ventanales</span>
+      </div>
+      <div class="caract-item fade">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 C7 8 5 12 5 15 a7 7 0 0 0 14 0 c0-3-2-7-7-12Z"/></svg>
+        <span>Materiales nobles</span>
+      </div>
+      <div class="caract-item fade">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 L18 12 H15 L19 18 H5 L9 12 H6 Z" stroke-linejoin="round"/></svg>
+        <span>Bosque y entorno natural</span>
+      </div>
+      <div class="caract-item fade">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4.5"/><path d="M12 3 V5.5 M12 18.5 V21 M3 12 H5.5 M18.5 12 H21 M5.6 5.6 L7.3 7.3 M16.7 16.7 L18.4 18.4 M5.6 18.4 L7.3 16.7 M16.7 7.3 L18.4 5.6" stroke-linecap="round"/></svg>
+        <span>Espacios luminosos</span>
+      </div>
+      <div class="caract-item fade">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17 L9 9 L13 14 L21 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Arquitectura pensada para durar</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE TERRANOVA -->
+<section class="s-sobre">
+  <div class="wrap">
+    <div class="label fade">Quién construye</div>
+    <h2 class="titulo fade">Terranova Sur Construcciones.</h2>
+    <p class="fade">Somos una constructora con base en Bariloche, especializada en proyectos residenciales que integran técnica, estética y territorio. NIVAL es nuestro desarrollo pensado para quienes buscan una forma de vivir en equilibrio con el paisaje patagónico.</p>
+    <a href="../index.html" class="btn btn-dark fade">Conocer Terranova Sur</a>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="s-form" id="contacto">
+  <div class="wrap">
+    <div class="form-box fade">
+      <div class="label">Contacto</div>
+      <h2 class="titulo">Quiero conocer NIVAL.</h2>
+      <form id="nivalForm">
+        <div class="field-row">
+          <div>
+            <label for="fNombre">Nombre</label>
+            <input type="text" id="fNombre" required>
+          </div>
+          <div>
+            <label for="fEmail">Email</label>
+            <input type="email" id="fEmail" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-full">
+            <label for="fWhatsapp">WhatsApp</label>
+            <input type="tel" id="fWhatsapp" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-full">
+            <label for="fMensaje">Mensaje</label>
+            <textarea id="fMensaje" placeholder="Contanos qué te gustaría saber sobre NIVAL"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-dark form-submit">Quiero conocer NIVAL</button>
+        <p class="form-note">Al enviar, se abre WhatsApp con tu consulta lista para mandarnos.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-logo"><img src="nival-logo.png" alt="NIVAL Residences"></div>
+      <div class="footer-col">
+        <h4>Redes</h4>
+        <a href="https://instagram.com/nival.bariloche" target="_blank">@nival.bariloche</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <a href="https://wa.me/5491127401947" target="_blank">+54 9 11 2740-1947</a>
+        <a href="mailto:contacto@terranovasur.com.ar">contacto@terranovasur.com.ar</a>
+      </div>
+      <div class="footer-col">
+        <h4>Ubicación</h4>
+        <p>Barrio Dos Valles, Bariloche<br>Patagonia Argentina</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 NIVAL Residences</span>
+      <span>Un desarrollo de Terranova Sur Construcciones</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav sólido al scrollear
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('solid', window.scrollY > 60);
+  });
+
+  // Fade-in al hacer scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+
+  // Tabs de galería
+  const tabs = document.querySelectorAll('.gal-tab');
+  const tracks = { 'tab-exterior': document.getElementById('tab-exterior'), 'tab-interior': document.getElementById('tab-interior') };
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      Object.values(tracks).forEach(t => t.style.display = 'none');
+      tracks[tab.dataset.target].style.display = 'flex';
+    });
+  });
+
+  // Flechas de galería
+  function activeTrack() {
+    return Object.values(tracks).find(t => t.style.display !== 'none');
+  }
+  document.getElementById('galPrev').addEventListener('click', () => {
+    activeTrack().scrollBy({ left: -420, behavior: 'smooth' });
+  });
+  document.getElementById('galNext').addEventListener('click', () => {
+    activeTrack().scrollBy({ left: 420, behavior: 'smooth' });
+  });
+
+  // Form → abre WhatsApp con los datos cargados
+  document.getElementById('nivalForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nombre = document.getElementById('fNombre').value;
+    const email = document.getElementById('fEmail').value;
+    const wpp = document.getElementById('fWhatsapp').value;
+    const msj = document.getElementById('fMensaje').value;
+    const texto = `Hola, soy ${nombre}. Quiero conocer más sobre NIVAL Residences.%0AEmail: ${email}%0AWhatsApp: ${wpp}${msj ? '%0AMensaje: ' + encodeURIComponent(msj) : ''}`;
+    window.open(`https://wa.me/5491127401947?text=${texto}`, '_blank');
+  });
+</script>
+</body>
+</html>
