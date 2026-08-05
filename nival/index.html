@@ -162,6 +162,24 @@
   .s-sobre h2 { font-size: clamp(26px, 3.6vw, 38px); font-weight: 500; margin: 22px 0 30px; }
   .s-sobre p { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 16.5px; line-height: 1.9; color: var(--gris); max-width: 640px; margin: 0 auto 40px; }
 
+  /* ── PARTICIPAN ── */
+  .s-participan { padding: 20px 0 110px; text-align: center; }
+  .s-participan .label { margin-bottom: 22px; }
+  .s-participan h2 { font-size: clamp(24px, 3.2vw, 34px); font-weight: 500; margin-bottom: 64px; }
+  .partners-row { display: flex; align-items: center; justify-content: center; gap: 64px; flex-wrap: wrap; }
+  .partners-row img { height: 56px; width: auto; object-fit: contain; opacity: 0.88; }
+  .partners-row .p-terranova { height: 84px; width: 84px; border-radius: 50%; object-fit: cover; box-shadow: 0 6px 20px rgba(29,29,27,0.12); }
+
+  /* ── VENTAS ── */
+  .s-ventas { padding: 40px 0 130px; text-align: center; }
+  .s-ventas .label { margin-bottom: 22px; }
+  .s-ventas h2 { font-size: clamp(24px, 3.2vw, 34px); font-weight: 500; margin-bottom: 60px; }
+  .ventas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; max-width: 900px; margin: 0 auto; }
+  .vendedor img { width: 92px; height: 92px; border-radius: 50%; object-fit: cover; margin: 0 auto 18px; box-shadow: 0 10px 26px rgba(29,29,27,0.14); }
+  .vendedor h4 { font-family: 'Montserrat', sans-serif; font-size: 14.5px; font-weight: 600; margin-bottom: 6px; }
+  .vendedor a { font-family: 'Inter', sans-serif; font-size: 13.5px; color: var(--gris); }
+  .vendedor a:hover { color: var(--roble); }
+
   /* ── FORM ── */
   .s-form { padding: 40px 0 150px; }
   .form-box { max-width: 640px; margin: 0 auto; text-align: center; }
@@ -206,6 +224,10 @@
     .caract-grid { grid-template-columns: 1fr; gap: 30px; }
     .s-caract { padding: 80px 0 90px; }
     .s-sobre { padding: 90px 0; }
+    .partners-row { gap: 34px; }
+    .partners-row img { height: 40px; }
+    .partners-row .p-terranova { height: 66px; width: 66px; }
+    .ventas-grid { grid-template-columns: 1fr 1fr; gap: 40px 24px; }
     .field-row { grid-template-columns: 1fr; }
     .footer-top { flex-direction: column; }
   }
@@ -365,13 +387,46 @@
   </div>
 </section>
 
-<!-- SOBRE TERRANOVA -->
-<section class="s-sobre">
+<!-- PARTICIPAN DEL PROYECTO -->
+<section class="s-participan">
   <div class="wrap">
-    <div class="label fade">Quién construye</div>
-    <h2 class="titulo fade">Terranova Sur Construcciones.</h2>
-    <p class="fade">Somos una constructora con base en Bariloche, especializada en proyectos residenciales que integran técnica, estética y territorio. NIVAL es nuestro desarrollo pensado para quienes buscan una forma de vivir en equilibrio con el paisaje patagónico.</p>
-    <a href="../index.html" class="btn btn-dark fade">Conocer Terranova Sur</a>
+    <div class="label fade">Participan de este proyecto</div>
+    <div class="partners-row fade">
+      <img class="p-terranova" src="../logo-terranova-sur.jpg" alt="Terranova Sur Construcciones">
+      <img src="partner-os-estudio.png" alt="OS Estudio">
+      <img src="partner-pg.png" alt="PG">
+      <img src="partner-remax.png" alt="Remax Montaña — Mitre 650">
+    </div>
+  </div>
+</section>
+
+<!-- VENTAS -->
+<section class="s-ventas">
+  <div class="wrap">
+    <div class="label fade">Ventas</div>
+    <h2 class="titulo fade">Consultá por tu unidad.</h2>
+    <div class="ventas-grid">
+      <div class="vendedor fade">
+        <img src="vendedor-1.jpg" alt="Silvana Salcedo">
+        <h4 class="titulo">Silvana Salcedo</h4>
+        <a href="https://wa.me/5492944596999" target="_blank">+54 9 2944 59-6999</a>
+      </div>
+      <div class="vendedor fade">
+        <img src="vendedor-2.jpg" alt="Dámaris Leguiza">
+        <h4 class="titulo">Dámaris Leguiza</h4>
+        <a href="https://wa.me/5492944713301" target="_blank">+54 9 2944 71-3301</a>
+      </div>
+      <div class="vendedor fade">
+        <img src="vendedor-3.jpg" alt="Darío Acevedo">
+        <h4 class="titulo">Darío Acevedo</h4>
+        <a href="https://wa.me/5492944350801" target="_blank">+54 9 2944 35-0801</a>
+      </div>
+      <div class="vendedor fade">
+        <img src="vendedor-4.jpg" alt="Lau Ruiz">
+        <h4 class="titulo">Lau Ruiz</h4>
+        <a href="https://wa.me/5492944251310" target="_blank">+54 9 2944 25-1310</a>
+      </div>
+    </div>
   </div>
 </section>
 
