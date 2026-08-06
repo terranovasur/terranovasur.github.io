@@ -166,9 +166,16 @@
   .s-participan { padding: 20px 0 110px; text-align: center; }
   .s-participan .label { margin-bottom: 22px; }
   .s-participan h2 { font-size: clamp(24px, 3.2vw, 34px); font-weight: 500; margin-bottom: 64px; }
-  .partners-row { display: flex; align-items: center; justify-content: center; gap: 64px; flex-wrap: wrap; }
-  .partners-row img { height: 56px; width: auto; object-fit: contain; opacity: 0.88; }
-  .partners-row .p-terranova { height: 84px; width: 84px; border-radius: 50%; object-fit: cover; box-shadow: 0 6px 20px rgba(29,29,27,0.12); }
+  .partners-row { display: flex; align-items: flex-start; justify-content: center; gap: 56px; flex-wrap: wrap; }
+  .partner-item { display: flex; flex-direction: column; align-items: center; width: 150px; }
+  .partner-item img {
+    width: 118px; height: 118px; border-radius: 50%; object-fit: cover;
+    box-shadow: 0 10px 28px rgba(29,29,27,0.14); margin-bottom: 16px;
+  }
+  .partner-item span {
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: var(--carbon);
+    line-height: 1.4;
+  }
 
   /* ── VENTAS ── */
   .s-ventas { padding: 40px 0 130px; text-align: center; }
@@ -224,9 +231,9 @@
     .caract-grid { grid-template-columns: 1fr; gap: 30px; }
     .s-caract { padding: 80px 0 90px; }
     .s-sobre { padding: 90px 0; }
-    .partners-row { gap: 34px; }
-    .partners-row img { height: 40px; }
-    .partners-row .p-terranova { height: 66px; width: 66px; }
+    .partners-row { gap: 30px; }
+    .partner-item { width: 42%; }
+    .partner-item img { width: 88px; height: 88px; margin-bottom: 12px; }
     .ventas-grid { grid-template-columns: 1fr 1fr; gap: 40px 24px; }
     .field-row { grid-template-columns: 1fr; }
     .footer-top { flex-direction: column; }
@@ -392,10 +399,22 @@
   <div class="wrap">
     <div class="label fade">Participan de este proyecto</div>
     <div class="partners-row fade">
-      <img class="p-terranova" src="../logo-terranova-sur.jpg" alt="Terranova Sur Construcciones">
-      <img src="partner-os-estudio.png" alt="OS Estudio">
-      <img src="partner-pg.png" alt="PG">
-      <img src="partner-remax.png" alt="Remax Montaña — Mitre 650">
+      <div class="partner-item">
+        <img src="badge-terranova.png" alt="Terranova Sur Construcciones">
+        <span>Terranova Sur<br>Construcciones</span>
+      </div>
+      <div class="partner-item">
+        <img src="badge-remax.png" alt="Remax Montaña">
+        <span>Remax Montaña</span>
+      </div>
+      <div class="partner-item">
+        <img src="badge-pg.png" alt="Arquitecto Pablo Gonzalez y Asociados">
+        <span>Arquitecto Pablo Gonzalez<br>y Asociados</span>
+      </div>
+      <div class="partner-item">
+        <img src="badge-os.png" alt="OS Arquitectura">
+        <span>OS Arquitectura</span>
+      </div>
     </div>
   </div>
 </section>
